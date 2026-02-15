@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Camera, Download, User, MessageSquare, Repeat2, Heart, Share, MoreHorizontal, CheckCircle2 } from 'lucide-react';
+import { Camera, Download, User, MessageSquare, Repeat2, Heart, Share, MoreHorizontal, BadgeCheck } from 'lucide-react';
 
 const App = () => {
   const [profile, setProfile] = useState({
@@ -206,7 +206,7 @@ const App = () => {
                       <div className="flex items-center gap-1">
                         <span className="font-bold text-[15px]">{profile.name}</span>
                         {profile.isVerified && (
-                          <CheckCircle2 className="w-[18px] h-[18px] text-blue-500 fill-blue-500" />
+                          <BadgeCheck className="w-[18px] h-[18px] text-blue-500 fill-blue-500" />
                         )}
                       </div>
                       <span className="text-neutral-500 text-[15px]">@{profile.handle}</span>
