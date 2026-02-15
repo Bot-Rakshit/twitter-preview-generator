@@ -249,7 +249,8 @@ const App = () => {
             
             <p className="mt-6 text-[10px] text-neutral-700 text-center uppercase tracking-widest leading-relaxed">
               Designed for Pixel Precision <br/>
-              Custom-built Preview Engine
+              Custom-built Preview Engine <br/>
+              <span className="text-blue-500">Made by Rakshit Singh</span>
             </p>
           </div>
         </div>
