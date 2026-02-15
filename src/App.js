@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Camera, Download, User, MessageSquare, Repeat2, Heart, Share, MoreHorizontal } from 'lucide-react';
+import { Camera, Download, User, MessageSquare, Repeat2, Heart, Share, MoreHorizontal, X } from 'lucide-react';
 
 // Twitter-style verification badge component
 const VerifiedBadge = () => (
@@ -62,6 +62,14 @@ const App = () => {
         }
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  const removeImage = (target) => {
+    if (target === 'avatar') {
+      setProfile({ ...profile, avatar: null });
+    } else {
+      setPost({ ...post, image: null });
     }
   };
 
@@ -149,19 +157,43 @@ const App = () => {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <label className="text-sm font-medium text-neutral-400">Profile Picture</label>
-              <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-neutral-700 rounded-xl cursor-pointer hover:bg-neutral-800 transition-colors">
-                <User className="w-6 h-6 text-neutral-500 mb-1" />
-                <span className="text-[10px] text-neutral-500">Change DP</span>
-                <input type="file" className="hidden" accept="image/*" onChange={(e) => handleImageUpload(e, 'avatar')} />
-              </label>
+              {profile.avatar ? (
+                <div className="relative w-full h-24 rounded-xl overflow-hidden border border-neutral-700">
+                  <img src={profile.avatar} alt="Profile" className="w-full h-full object-cover" />
+                  <button 
+                    onClick={() => removeImage('avatar')}
+                    className="absolute top-1 right-1 bg-black/80 text-white p-1 rounded-full hover:bg-red-500 transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              ) : (
+                <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-neutral-700 rounded-xl cursor-pointer hover:bg-neutral-800 transition-colors">
+                  <User className="w-6 h-6 text-neutral-500 mb-1" />
+                  <span className="text-[10px] text-neutral-500">Add DP</span>
+                  <input type="file" className="hidden" accept="image/*" onChange={(e) => handleImageUpload(e, 'avatar')} />
+                </label>
+              )}
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-neutral-400">Post Image</label>
-              <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-neutral-700 rounded-xl cursor-pointer hover:bg-neutral-800 transition-colors">
-                <Camera className="w-6 h-6 text-neutral-500 mb-1" />
-                <span className="text-[10px] text-neutral-500">Add Picture</span>
-                <input type="file" className="hidden" accept="image/*" onChange={(e) => handleImageUpload(e, 'postImage')} />
-              </label>
+              {post.image ? (
+                <div className="relative w-full h-24 rounded-xl overflow-hidden border border-neutral-700">
+                  <img src={post.image} alt="Post" className="w-full h-full object-cover" />
+                  <button 
+                    onClick={() => removeImage('postImage')}
+                    className="absolute top-1 right-1 bg-black/80 text-white p-1 rounded-full hover:bg-red-500 transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              ) : (
+                <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-neutral-700 rounded-xl cursor-pointer hover:bg-neutral-800 transition-colors">
+                  <Camera className="w-6 h-6 text-neutral-500 mb-1" />
+                  <span className="text-[10px] text-neutral-500">Add Picture</span>
+                  <input type="file" className="hidden" accept="image/*" onChange={(e) => handleImageUpload(e, 'postImage')} />
+                </label>
+              )}
             </div>
           </div>
 
