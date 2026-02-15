@@ -1,10 +1,27 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Camera, Download, User, MessageSquare, Repeat2, Heart, Share, MoreHorizontal, BadgeCheck } from 'lucide-react';
+import { Camera, Download, User, MessageSquare, Repeat2, Heart, Share, MoreHorizontal } from 'lucide-react';
+
+// Twitter-style verification badge component
+const VerifiedBadge = () => (
+  <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path 
+      d="M9 12L11 14L15 10M12 2L14.4 4.4C14.7 4.1 15.3 4.1 15.6 4.4L18.4 2.6C18.8 2.2 19.4 2.5 19.4 3.1V6.3C19.9 6.6 20.4 7.1 20.7 7.6H21.9C22.5 7.6 22.8 8.2 22.4 8.6L20.6 11.4C20.9 11.7 20.9 12.3 20.6 12.6L22.4 15.4C22.8 15.8 22.5 16.4 21.9 16.4H20.7C20.4 16.9 19.9 17.4 19.4 17.7V20.9C19.4 21.5 18.8 21.8 18.4 21.4L15.6 19.6C15.3 19.9 14.7 19.9 14.4 19.6L12 22L9.6 19.6C9.3 19.9 8.7 19.9 8.4 19.6L5.6 21.4C5.2 21.8 4.6 21.5 4.6 20.9V17.7C4.1 17.4 3.6 16.9 3.3 16.4H2.1C1.5 16.4 1.2 15.8 1.6 15.4L3.4 12.6C3.1 12.3 3.1 11.7 3.4 11.4L1.6 8.6C1.2 8.2 1.5 7.6 2.1 7.6H3.3C3.6 7.1 4.1 6.6 4.6 6.3V3.1C4.6 2.5 5.2 2.2 5.6 2.6L8.4 4.4C8.7 4.1 9.3 4.1 9.6 4.4L12 2Z" 
+      fill="#1d9bf0"
+    />
+    <path 
+      d="M9 12L11 14L15 10" 
+      stroke="white" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 const App = () => {
   const [profile, setProfile] = useState({
     name: 'Rakshit Singh',
-    handle: 'rakshitdev',
+    handle: 'ra1kshit',
     avatar: null,
     isVerified: true
   });
@@ -205,9 +222,7 @@ const App = () => {
                     <div className="flex flex-col leading-tight pt-1">
                       <div className="flex items-center gap-1">
                         <span className="font-bold text-[15px]">{profile.name}</span>
-                        {profile.isVerified && (
-                          <BadgeCheck className="w-[18px] h-[18px] text-blue-500 fill-blue-500" />
-                        )}
+                        {profile.isVerified && <VerifiedBadge />}
                       </div>
                       <span className="text-neutral-500 text-[15px]">@{profile.handle}</span>
                     </div>
