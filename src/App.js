@@ -3,14 +3,14 @@ import { Camera, Download, User, MessageSquare, Repeat2, Heart, Share, MoreHoriz
 
 const App = () => {
   const [profile, setProfile] = useState({
-    name: 'Ishan Sukul',
-    handle: 'isawsukul',
+    name: 'Rakshit Singh',
+    handle: 'rakshitdev',
     avatar: null,
     isVerified: true
   });
 
   const [post, setPost] = useState({
-    content: '> People saying this is "peak unemployment" really don\'t understand that most people are lonely and just want to attach themselves to a community / individuals with similar taste\n> Loneliness is a real thing and these sort of events really bring people together, we need a lot more of these\n> Sitting terminally online and calling ourselves productive is equally bad, if not worse\n> Yes anon, this is that deep\n> Nothing, Bluorng, Jaywalking...loving the cult-ness that\'s being built in India',
+    content: 'I built this Twitter Preview Generator because I was tired of seeing low-quality tweet screenshots that didn\'t look authentic. As a developer and content creator, I wanted a tool that creates pixel-perfect mockups with proper typography, spacing, and dark mode aesthetics.\n\nNow I can create professional tweet previews for presentations, portfolio showcases, and social media content in seconds. No Photoshop required! 🚀\n\nBuilt with React + Tailwind + dom-to-image. Open source on GitHub.',
     image: null,
     timestamp: '2:37 PM · Feb 15, 2026',
     views: '6,604'
